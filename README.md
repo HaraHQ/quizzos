@@ -75,4 +75,4 @@ After create the supabase table, and you provide the `.env` value as per it's ke
 - React Query
 - Typescript
 - Amazon Q (AI)
-- ChatGPT (AI)
+- ChatGPT (AI) => some functional code, optimizing functions / code, and arabic translation
