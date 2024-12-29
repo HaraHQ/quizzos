@@ -22,7 +22,6 @@ import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Quiz } from "@/pages/api/admin/quiz/[share_id]";
-import { data } from "framer-motion/client";
 import useLocaleStore from "@/stores/locale";
 
 export interface Option {

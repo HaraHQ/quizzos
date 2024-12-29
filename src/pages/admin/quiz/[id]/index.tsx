@@ -5,8 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
-  PiCaretLeftFill,
-  PiCaretRightFill,
   PiCursorClickBold,
 } from "react-icons/pi";
 
@@ -33,14 +31,14 @@ const QuizDetailById = () => {
     refetchOnMount: false
   })
 
-  const getTotalTime = (answers: any[]) => {
+  const getTotalTime = (answers: Record<string, any>[]) => {
     let count = 0;
     answers.map((x) => (count += x.time));
     return count;
   };
-  const getTotalTrue = (answers: any[]) => {
+  const getTotalTrue = (answers: Record<string, any>[]) => {
     let count = 0;
-    answers.map((x, index) => {
+    answers.map((x) => {
       if (x.isCorrect) {
         count += 1;
       }

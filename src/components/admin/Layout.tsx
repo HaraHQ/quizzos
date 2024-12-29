@@ -23,7 +23,7 @@ const ADLayout: FC<PropsWithChildren> = ({ children }) => {
       router.push("/");
     }
     setReady(true);
-  }, []);
+  }, [auth.token, router]);
 
   const handleLogout = () => {
     auth.clear();

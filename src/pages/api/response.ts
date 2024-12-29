@@ -9,7 +9,7 @@ type Data = {
 
 type ErrorResponse = {
   error: string;
-  decode?: any;
+  decode?: Record<string, string|number>;
 };
 
 export default async function handler(
@@ -31,7 +31,7 @@ export default async function handler(
     try {
       // Step 2: Decode the JWT to get the user_id
       const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { id: string };
-      const user_id = decoded.id as string;
+      // const user_id = decoded.id as string;
 
       // Step 3: Extract the body from the request
       const { quiz_id, answers } = req.body;

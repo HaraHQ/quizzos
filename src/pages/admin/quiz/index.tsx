@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CiExport, CiViewTable } from "react-icons/ci";
-import { PiEye } from "react-icons/pi";
 
 const AdminQuizList = () => {
   const auth = useAuthStore();

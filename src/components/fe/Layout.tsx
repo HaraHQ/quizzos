@@ -29,7 +29,7 @@ const FELayout: FC<Layout> = ({ children, timeBar, topBar }) => {
     } else {
       setReady(true);
     }
-  }, [ready]);
+  }, [ready, auth.token, router]);
 
   if (!ready) return (
     <div className="h-screen w-full bg-black text-yellow-400 flex justify-center items-center">

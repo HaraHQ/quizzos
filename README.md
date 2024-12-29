@@ -62,6 +62,11 @@ After create the supabase table, and you provide the `.env` value as per it's ke
 - In admin page, you also can see the `response from other user including you`, even you can check their answers and find out `the answers per question`, and find out its `correct` or `not` (*for better visibility of responders*)
 - In admin page, specifically on quiz list, you can click the icon on `card`, on top will show you the `quiz responses detail` (data grid as data table), the bottom one to show `quiz id`
 
+## Note
+
+- I just set some off on eslint (like checking `any`), but I still minimize the uses of `any` type
+- A small issue: after load quiz, the `react-query` or `effect` not update the questions, you can press `back` button and retry to input the quiz ID, I think you can start to take the quiz from that way
+
 ## Tools
 
 - VSCode

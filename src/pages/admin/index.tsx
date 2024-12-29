@@ -3,7 +3,6 @@ import LanguageToggler from "@/components/LanguageToggler"
 import { useAuthStore } from "@/stores/auth";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { useState } from "react"
 import { Quiz } from "../api/admin/quiz/[share_id]";
 import useLocaleStore from "@/stores/locale";
 

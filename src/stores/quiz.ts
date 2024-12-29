@@ -10,14 +10,14 @@ type QuizStore = {
     correct_counter: number;
     question_counter: number;
   };
-  answer: any[];
-  setAnswer: (answer: any) => void;
+  answer: Record<string, any>[];
+  setAnswer: (answer: Record<string, any>) => void;
   resetAnswer: () => void;
   setResult: (time: number, counter: number, question: number) => void;
   setId: (id: string) => void;
   setQuiz: (quiz: any) => void;
   resetQuiz: () => void;
-  getResponse: (id: string) => any;
+  getResponse: (id: string) => string | undefined;
 };
 
 const useQuizStore = create<QuizStore>((set, get) => ({

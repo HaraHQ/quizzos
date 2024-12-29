@@ -1,12 +1,11 @@
 import FELayout from "@/components/fe/Layout";
 import CountdownTimer, {
-  end,
   reset,
   start,
   getElapsedTime,
 } from "@/components/CountdownTimer";
 import { useEffect, useState } from "react";
-import { Option, Question } from "./admin/quiz/create";
+import { Option } from "./admin/quiz/create";
 import { useRouter } from "next/router";
 import { useAuthStore } from "@/stores/auth";
 import useQuizStore from "@/stores/quiz";
@@ -15,7 +14,7 @@ import useLocaleStore from "@/stores/locale";
 
 interface Submission {
   quiz_id?: string;
-  answers: any;
+  answers: Record<string, any>;
 }
 
 const ActionsPage = () => {
@@ -73,7 +72,7 @@ const ActionsPage = () => {
     };
     const getTotalTrue = () => {
       let count = 0;
-      answers.forEach((x, index) => {
+      answers.forEach((x) => {
         if (x.isCorrect) {
           count += 1;
         }
@@ -119,21 +118,26 @@ const ActionsPage = () => {
   const q = useQuery({
     refetchOnMount: false,
     queryKey: ["quizzes", quiz.id],
-    queryFn: async () =>
-      await fetch(`/api/quiz?share_id=${quiz.id}`, {
+    queryFn: async () => {
+      const res = await fetch(`/api/quiz?share_id=${quiz.id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${auth.token}`,
         },
-      }).then(async (res) => {
-        if (res.ok) {
-          const data = await res.json();
-          quiz.setQuiz(data);
-          setActive(quiz.sequence[0]);
-        }
-      }),
+      })
+
+      const data = await res.json();
+      return data;
+    },
   });
+
+  useEffect(() => {
+    if (q.data && q.isSuccess) {
+      quiz.setQuiz(q.data);
+      setActive(quiz.sequence[0]);
+    }
+  }, [q.data, q.isSuccess])
 
   useEffect(() => {
     if ((quiz.answer.length === quiz.sequence.length) && quiz.answer.length) handleEndQuiz();
